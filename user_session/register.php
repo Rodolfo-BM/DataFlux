@@ -1,6 +1,6 @@
 <?php
 
-include `/includes/connect.php`
+include `/includes/connect.php`;
 
 // Conexão com o banco de dados
 $conn = new mysqli($host, $username, $password, $database);
