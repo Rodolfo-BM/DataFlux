@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Redirecionar para o login se não estiver autenticado
+    exit();
+}
+
+$username = htmlspecialchars($_SESSION['login']);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,19 +20,19 @@
 <body>
     <div class="navbar">
         <div class="logo">Minha Aplicação</div>
-        <div class="nav-links">
-            <a href="profile.html">Perfil</a>
-            <a href="settings.html">Configurações</a>
-            <a href="logout.html">Sair</a>
+        <div class="nav-links"><!--todo-->
+            <a href="profile.php">Perfil</a><!--todo-->
+            <a href="settings.php">Configurações</a><!--todo-->
+            <a href="logout.php">Sair</a><!--todo-->
         </div>
     </div>
     <div class="container">
         <div class="welcome-message">
-            Bem-vindo de volta, <span id="username">Usuário</span>!
+            Bem-vindo de volta, <?php echo $username; ?>!
         </div>
         <p>Aqui estão as últimas atualizações e informações relevantes para você.</p>
         <!-- Conteúdo adicional do dashboard aqui -->
-        <button class="logout-button" onclick="window.location.href='logout.html';">Sair</button>
+        <button class="logout-button" onclick="window.location.href='logout.php';">Sair</button>
     </div>
 </body>
 </html>
