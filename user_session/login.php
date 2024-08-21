@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-include '/includes/connect.php';
+include '../includes/connect.php';
 
 $conn = new mysqli($host, $username, $password, $database);
 
@@ -49,4 +50,3 @@ if (password_verify($password, $hashed_password)) {
 
 $stmt->close();
 $conn->close();
-?>

@@ -1,6 +1,6 @@
 <?php
 
-include `/includes/connect.php`;
+include '../includes/connect.php';
 
 // Conexão com o banco de dados
 $conn = new mysqli($host, $username, $password, $database);
@@ -11,7 +11,8 @@ if ($conn->connect_error) {
 }
 
 // Obtendo os dados do formulário
-$name = $_POST['name'];
+$full_name = $_POST['full_name'];
+$username = $_POST['username'];
 $email = $_POST['email'];
 $position = $_POST['position'];
 $password = $_POST['password'];
@@ -26,7 +27,7 @@ if ($password !== $confirm_password) {
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Preparando a instrução SQL para inserção
-$sql = "INSERT INTO users (name, email, position, password) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO users (full_name, username, email, position, password) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 // Verificar se a preparação da instrução falhou
@@ -35,7 +36,7 @@ if (!$stmt) {
 }
 
 // Bind dos parâmetros
-$stmt->bind_param("ssss", $name, $email, $position, $hashed_password);
+$stmt->bind_param("sssss",$full_name, $username, $email, $position, $hashed_password);
 
 // Executando a instrução
 if ($stmt->execute()) {
@@ -47,4 +48,3 @@ if ($stmt->execute()) {
 // Fechando a instrução e a conexão
 $stmt->close();
 $conn->close();
-?>

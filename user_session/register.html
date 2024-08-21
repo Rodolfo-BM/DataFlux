@@ -11,16 +11,24 @@
         <h2>Registro de Novo Usuário</h2>
         <form action="register.php" method="POST">
             <div class="form-group">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
+                <label for="full_name">Nome:</label>
+                <input type="text" id="full_name" name="full_name" placeholder="Nome e sobrenome">
+            </div>
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" name="username" id="username" placeholder="510999999" required>
             </div>
             <div class="form-group">
                 <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="exemplo@gmail.com">
             </div>
             <div class="form-group">
                 <label for="position">Posição:</label>
-                <input type="text" id="position" name="position" required>
+                <select id="position" name="position" required>
+                    <option value="base" selected>Base</option>
+                    <option value="leader">Lider</option>
+                    <option value="manager">Gerente</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="password">Senha:</label>
