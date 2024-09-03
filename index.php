@@ -1,5 +1,6 @@
 <?php
 session_start(); // Iniciar a sessão
+echo "<script>alert('Mensagem rápida para o usuário!');</script>";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: user_session/login.html"); // Redirecionar para o login se não estiver autenticado

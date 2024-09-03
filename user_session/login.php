@@ -1,5 +1,6 @@
 <?php
 session_start();
+echo "<script>alert('Mensagem rápida para o usuário!');</script>";
 
 include '../includes/connect.php';
 
@@ -42,7 +43,7 @@ if (password_verify($password, $hashed_password)) {
     $_SESSION['user_id'] = $user_id;
     $_SESSION['login'] = $login;
 
-    header("Location: dashboard.php");
+    header("Location: ../index.php");
     exit();
 } else {
     echo "Senha incorreta.";
